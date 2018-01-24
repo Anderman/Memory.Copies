@@ -14,7 +14,7 @@ namespace DotNetCross.Memory.Copies.Benchmarks2
         public static double LoopOverhead;
         public static ulong CyclesPerSecond;
         public static double NsPerCycle;
-
+         
         public static void Main(string[] args)
         {
             Console.WriteLine($"Warmup...");
