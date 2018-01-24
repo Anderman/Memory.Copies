@@ -13,7 +13,7 @@ namespace DotNetCross.Memory.Copies.Benchmarks2
         //private static readonly IntPtr PseudoHandle = (IntPtr)(-2);
         public static double LoopOverhead;
         public static ulong CyclesPerSecond;
-        public static double NsPerCycle;
+        public static double NsPerCycle; 
          
         public static void Main(string[] args)
         {
