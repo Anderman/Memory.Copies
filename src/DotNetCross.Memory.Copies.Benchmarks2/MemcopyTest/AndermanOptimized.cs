@@ -1,9 +1,8 @@
 using System;
-using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace DotNetCross.Memory.Copies.Benchmarks2
+namespace DotNetCross.Memory.Copies.Benchmarks2.MemcopyTest
 {
     public static class AndermanOptimized
     {
@@ -57,46 +56,46 @@ namespace DotNetCross.Memory.Copies.Benchmarks2
                 }
 
                 pSrc -= (long)pDst;
-                Unsafe.Write(pDst, Unsafe.Read<Vector<byte>>(pSrc + (long)pDst));
+                //Unsafe.Write(pDst, Unsafe.Read<Vector<byte>>(pSrc + (long)pDst));
 
-                var offset = (int)((ulong)pDst & mask);
-                count += offset - alignment;
-                pDst += alignment - offset;
+                //var offset = (int)((ulong)pDst & mask);
+                //count += offset - alignment;
+                //pDst += alignment - offset;
 
-                while (count >= 4 * Vector<byte>.Count)
-                {
-                    var x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst);
-                    var x2 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst + Vector<byte>.Count);
-                    count -= 4 * Vector<byte>.Count;
-                    Unsafe.Write(pDst, x1);
-                    Unsafe.Write(pDst + Vector<byte>.Count, x2);
-                    pDst += 4 * Vector<byte>.Count;
-                    x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst - 2 * Vector<byte>.Count);
-                    x2 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst - Vector<byte>.Count);
-                    Unsafe.Write(pDst - 2 * Vector<byte>.Count, x1);
-                    Unsafe.Write(pDst - Vector<byte>.Count, x2);
-                }
-                while (count >= 2 * Vector<byte>.Count)
-                {
-                    var x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst);
-                    var x2 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst + Vector<byte>.Count);
-                    count -= 2 * Vector<byte>.Count;
-                    Unsafe.Write(pDst, x1);
-                    Unsafe.Write(pDst + Vector<byte>.Count, x2);
-                    pDst += 2 * Vector<byte>.Count;
-                }
-                while (count >= 1 * Vector<byte>.Count)
-                {
-                    var x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst);
-                    count -= Vector<byte>.Count;
-                    Unsafe.Write(pDst, x1);
-                    pDst += Vector<byte>.Count;
-                }
-                if (count > 0)
-                {
-                    pDst += count - Vector<byte>.Count;
-                    Unsafe.Write(pDst, Unsafe.Read<Vector<byte>>(pSrc + (long) pDst));
-                }
+                //while (count >= 4 * Vector<byte>.Count)
+                //{
+                //    var x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst);
+                //    var x2 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst + Vector<byte>.Count);
+                //    count -= 4 * Vector<byte>.Count;
+                //    Unsafe.Write(pDst, x1);
+                //    Unsafe.Write(pDst + Vector<byte>.Count, x2);
+                //    pDst += 4 * Vector<byte>.Count;
+                //    x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst - 2 * Vector<byte>.Count);
+                //    x2 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst - Vector<byte>.Count);
+                //    Unsafe.Write(pDst - 2 * Vector<byte>.Count, x1);
+                //    Unsafe.Write(pDst - Vector<byte>.Count, x2);
+                //}
+                //while (count >= 2 * Vector<byte>.Count)
+                //{
+                //    var x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst);
+                //    var x2 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst + Vector<byte>.Count);
+                //    count -= 2 * Vector<byte>.Count;
+                //    Unsafe.Write(pDst, x1);
+                //    Unsafe.Write(pDst + Vector<byte>.Count, x2);
+                //    pDst += 2 * Vector<byte>.Count;
+                //}
+                //while (count >= 1 * Vector<byte>.Count)
+                //{
+                //    var x1 = Unsafe.Read<Vector<byte>>(pSrc + (long)pDst);
+                //    count -= Vector<byte>.Count;
+                //    Unsafe.Write(pDst, x1);
+                //    pDst += Vector<byte>.Count;
+                //}
+                //if (count > 0)
+                //{
+                //    pDst += count - Vector<byte>.Count;
+                //    Unsafe.Write(pDst, Unsafe.Read<Vector<byte>>(pSrc + (long) pDst));
+                //}
             }
         }
     }

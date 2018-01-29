@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace DotNetCross.Memory.Copies.Benchmarks2
+namespace DotNetCross.Memory.Copies.Benchmarks2.MemcopyTest
 {
     //Used this code only for testing. This code works only on 64bit
     public static class AndermanMovsb

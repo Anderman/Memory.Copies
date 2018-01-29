@@ -1,7 +1,7 @@
-namespace DotNetCross.Memory.Copies.Benchmarks2
+namespace Medella.Performance.Tester.GoogleChart
 {
-    public class Row
-    {
-        public C[] c { get; set; }
-    }
+	public class Row
+	{
+		public C[] c { get; set; }
+	}
 }
